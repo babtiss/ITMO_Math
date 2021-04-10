@@ -10,7 +10,7 @@ fin_edges = open("distances.txt")
 country = []  # список стран
 edges_name = dict()  # key= name country, value = num country
 G = nx.Graph()  # граф
-matrix = [[] for i in range(V)]  # матрица смежности
+matrix = [[] for i in range(V)] 
 for i in range(V):
     pars_one = fin_country.readline().split('.')
     num, name = pars_one[0], pars_one[1][:-1]
