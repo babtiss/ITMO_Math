@@ -11,7 +11,7 @@ country = []  # список стран
 edges = []  # список рёбер
 edges_name = []
 G = nx.Graph()
-matrix = [[0] * V for i in range(V)]  # матрица смежности
+matrix = [[0] * V for i in range(V)]  
 for i in range(V):
     pars_one = fin_country.readline().split('.')
     if i != V - 1:
