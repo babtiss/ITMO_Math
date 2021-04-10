@@ -25,7 +25,7 @@ for i in range(E):
     G.add_edge(country[a], country[b])
 
 # Колдую над цветом
-colors_map = [0] * E
+colors_map = [None] * E  # список цвета каждого ребра
 colors_dict = [1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.3, 0.2, 0]  # список всех цветов
 colors_friend = [[] for i in range(V)]  # список соседей у вершины
 
