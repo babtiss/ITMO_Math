@@ -1,1 +1,1 @@
-Discrete mathematics 1 course.
+# Discrete mathematics 1 course.
