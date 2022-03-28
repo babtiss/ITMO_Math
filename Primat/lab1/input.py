@@ -5,6 +5,7 @@ delta = 10 ** (-6)
 A, B = 3, 7
 GOLD = 2 / (1 + math.sqrt(5))
 N = 14
+K = (3 - math.sqrt(5)) / 2
 
 
 def f(x: float) -> float:
