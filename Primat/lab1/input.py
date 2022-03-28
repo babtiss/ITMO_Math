@@ -2,7 +2,7 @@ import math
 
 epsilon = 10 ** (-5)
 delta = 10 ** (-6)
-A, B = 2, 7
+A, B = 3, 7
 GOLD = 2 / (1 + math.sqrt(5))
 N = 14
 
