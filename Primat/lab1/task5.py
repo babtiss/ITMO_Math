@@ -18,14 +18,14 @@ def brent_method(a, c, epsilon):
         if len({x, w, v}) == 3 and len({fx, fw, fv}) == 3:
             u = paraboll_method(a, c, epsilon)[0]
 
-        if a + epsilon <= u <= c - epsilon and abs(u - x) < g / 2:
+        if len({x, w, v}) != 1 and len({fx, fw, fv}) != 1 and a + epsilon <= u <= c - epsilon and abs(u - x) < g / 2:
 
-            x1 = a
-            x2 = (a + c) / 2
-            x3 = c
-            func1 = f(my_counter, x1)
-            func2 = f(my_counter, x2)
-            func3 = f(my_counter, x3)
+            x1 = x
+            x2 = v
+            x3 = w
+            func1 = fx
+            func2 = fv
+            func3 = fw
 
             z1 = ((x2 - x1) ** 2 * (func2 - func3) - (x2 - x3) ** 2 * (func2 - func1))
             z2 = (2 * ((x2 - x1) * (func2 - func3) - (x2 - x3) * (func2 - func1)))
