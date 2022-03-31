@@ -15,10 +15,7 @@ def brent_method(a, c, epsilon):
         k += 1
         g, e = e, d
 
-        if len({x, w, v}) == 3 and len({fx, fw, fv}) == 3:
-            u = paraboll_method(a, c, epsilon)[0]
-
-        if len({x, w, v}) != 1 and len({fx, fw, fv}) != 1 and a + epsilon <= u <= c - epsilon and abs(u - x) < g / 2:
+        if len({x, w, v}) == 3 and len({fx, fw, fv}) == 3 and a + epsilon <= u <= c - epsilon and abs(u - x) < g / 2:
 
             x1 = x
             x2 = v
@@ -26,8 +23,7 @@ def brent_method(a, c, epsilon):
             func1 = fx
             func2 = fv
             func3 = fw
-
-            z1 = ((x2 - x1) ** 2 * (func2 - func3) - (x2 - x3) ** 2 * (func2 - func1))
+            z1 = (x2 - x1) ** 2 * (func2 - func3) - (x2 - x3) ** 2 * (func2 - func1)
             z2 = (2 * ((x2 - x1) * (func2 - func3) - (x2 - x3) * (func2 - func1)))
 
             u = x2 - z1 / z2
