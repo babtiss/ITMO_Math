@@ -3,8 +3,6 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-
-
 # Производные по аргументам
 def derivative_y(x, y):
     return (f_dimensional(x, y + derivative_epsilon) -
@@ -36,6 +34,12 @@ def get_grid(grid_step, radius):
     return x, y, f_dimensional(x, y)
 
 
+def draw_save(x, y, f, X, Y, F):
+    X.append(x)
+    Y.append(y)
+    F.append(f)
+
+
 def draw_function_plot(points):
     grid_x, grid_y, grid_z = get_grid(0.05, 8)
 
@@ -54,14 +58,19 @@ def draw_function_plot(points):
     ax.plot_surface(grid_x, grid_y, grid_z, rstride=5, cstride=5, alpha=0.7)
     plt.show()
 
+
 # 1 Функция
 def f_dimensional(x, y):
     return x ** 2 + y ** 2
 
+
+# CONST
+K1 = (3 - math.sqrt(5)) / 2
+K2 = (math.sqrt(5) - 1) / 2
+
 # Границы поиска 1 функции
 A = -6
 B = 7
-
 STEP = 0.1
 derivative_epsilon = 0.000001
 epsilon = 0.00001
