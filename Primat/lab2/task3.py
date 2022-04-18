@@ -1,5 +1,3 @@
-from matplotlib import pyplot as plt
-
 from input import *
 
 
@@ -40,31 +38,30 @@ def gradient_method_golden(func):
     xn = A
     yn = B
     fn = func(xn, yn)
-    X = []
-    Y = []
-    F = []
-    # заводим словарь, где будем хранить все найденные значения функции
-    X.append(xn)
-    Y.append(yn)
-    F.append(fn)
     count = 0
     lambda_x = 0
 
+    # заводим словарь, где будем хранить все найденные значения функции
+    X = []
+    Y = []
+    F = []
+    draw_save(xn, yn, fn, X, Y, F)
+
+    # по формуле градиентного спуска получаем все значения x y
     while func(xn, yn) - func(xn - lambda_x * derivative_x(xn, yn), yn) >= epsilon * lambda_x * derivative_x(xn,
                                                                                                              yn) ** 2:
         count += 1
-        # lambda_x = _golden_selection(0, 0.8, xn, yn, 0.4, _f_x)
-        # lambda_y = _golden_selection(0, 0.8, xn, yn, 0.4, _f_y)
+
+        # методом золотого сечения находим оптимальный lambdaOxy
         lambda_x = _golden_selection(0, 1.9, xn, yn, 2, _f_x)
         lambda_y = _golden_selection(0, 1.9, xn, yn, 2, _f_y)
+
         xn = xn - lambda_x * derivative_x(xn, yn)
         yn = yn - lambda_y * derivative_y(xn, yn)
         fn = func(xn, yn)
-        X.append(xn)
-        Y.append(yn)
-        F.append(fn)
+        draw_save(xn, yn, fn, X, Y, F)
 
-    print(count, fn)
+    print(xn, yn, fn, count)
     return X, Y, F
 
 
