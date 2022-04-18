@@ -1,6 +1,3 @@
-import matplotlib
-from matplotlib import pyplot as plt
-from scipy.misc import derivative
 from input import *
 
 
@@ -11,44 +8,40 @@ def gradient_method_2(func):
     fn = func(xn, yn)
     count = 0
     stepn = STEP
+    x_prev = xn
+    y_prev = yn
 
     # заводим словарь, где будем хранить все найденные значения функции
     X = []
     Y = []
     F = []
+    draw_save(xn, yn, fn, X, Y, F)
 
-    # предыдущие значения xn, yn:
-    x_prev = xn
-    y_prev = yn
-    X.append(xn)
-    Y.append(yn)
-    F.append(fn)
-    count_global = 0
+    # по формуле градиентного спуска получаем все значения x y
     while abs(derivative_x(xn, yn) + derivative_y(xn, yn)) > epsilon:
         xn, x_prev = x_prev - STEP * derivative_x(x_prev, y_prev), xn
         yn, y_prev = y_prev - STEP * derivative_y(x_prev, y_prev), yn
 
         fn = func(xn, yn)
-        X.append(xn)
-        Y.append(yn)
-        F.append(fn)
-        count_global += 1
+        draw_save(xn, yn, fn, X, Y, F)
+
+        # дробление STEP
         while func(x_prev, y_prev) <= func(xn, yn):
             xn, x_prev = x_prev - STEP * derivative_x(x_prev, y_prev), xn
             yn, y_prev = y_prev - STEP * derivative_y(x_prev, y_prev), yn
+
             fn = func(xn, yn)
-            X.append(xn)
-            Y.append(yn)
-            F.append(fn)
+
+            draw_save(xn, yn, fn, X, Y, F)
+
             stepn = stepn * DELTA
             count += 1
-            count_global += 1
-            
-            # сбрасываем шаг каждые 100 итераций
-            if count == 100:
+
+            # Каждые 100 итераций сбрасываем шаг до начального
+            if count % 100 == 0:
                 stepn = STEP
-                count = 0
-        print(count_global)
+
+    print(xn, yn, fn, count)
 
     return X, Y, F
 
