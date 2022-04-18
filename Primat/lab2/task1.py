@@ -1,10 +1,6 @@
 from matplotlib import pyplot as plt
 from input import *
 
-
-# подготовка к Град. спуску
-
-
 def gradient_method(func):
     # начальн. значение
     xn = A
@@ -19,6 +15,7 @@ def gradient_method(func):
     X.append(xn)
     Y.append(yn)
     F.append(fn)
+    
     # по формуле градиентного спуска получаем все значения x y
     while abs(derivative_x(xn, yn) + derivative_y(xn, yn)) > epsilon:
         xn = xn - STEP * derivative_x(xn, yn)
@@ -30,7 +27,8 @@ def gradient_method(func):
         X.append(xn)
         Y.append(yn)
         F.append(fn)
-    print(xn, yn)
+        
+    print(xn, yn, count)
     return X, Y, F
 
 
