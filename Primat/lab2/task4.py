@@ -39,33 +39,30 @@ def gradient_method_fibonacci(func):
     yn = B
     fn = func(xn, yn)
     count = 0
+    lambda_x = 0
 
     # заводим словарь, где будем хранить все найденные значения функции
     X = []
     Y = []
     F = []
-    X.append(xn)
-    Y.append(yn)
-    F.append(fn)
-    count = 0
-    lambda_x = 0
+    draw_save(xn, yn, fn, X, Y, F)
+
+    # по формуле градиентного спуска получаем все значения x y
     while func(xn, yn) - func(xn - lambda_x * derivative_x(xn, yn), yn) >= epsilon * lambda_x * derivative_x(xn,
                                                                                                              yn) ** 2:
-        # lambda_x = fibonacci_method(0, 0.8, 3, xn, yn, _f_x)
-        # lambda_y = fibonacci_method(0, 0.8, 3, xn, yn, _f_y)
+        count += 1
+
+        # методом Фибоначчи находим оптимальный lambdaOxy
         lambda_x = fibonacci_method(0, 1.3, 5, xn, yn, _f_x)
         lambda_y = fibonacci_method(0, 1.3, 5, xn, yn, _f_y)
-        count += 1
         xn = xn - lambda_x * derivative_x(xn, yn)
         yn = yn - lambda_y * derivative_y(xn, yn)
 
         fn = func(xn, yn)
 
-        X.append(xn)
-        Y.append(yn)
-        F.append(fn)
-    print(count, fn)
+        draw_save(xn, yn, fn, X, Y, F)
 
+    print(xn, yn, fn, count)
     return X, Y, F
 
 
