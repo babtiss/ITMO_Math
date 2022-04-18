@@ -43,6 +43,8 @@ def gradient_method_2(func):
             stepn = stepn * DELTA
             count += 1
             count_global += 1
+            
+            # сбрасываем шаг каждые 100 итераций
             if count == 100:
                 stepn = STEP
                 count = 0
