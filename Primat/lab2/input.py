@@ -3,11 +3,6 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 
-def f(x):
-    return math.e ** (math.sin(x) * math.log(x, math.e))
-
-
-# Наша двумерная функция
 
 
 # Производные по аргументам
