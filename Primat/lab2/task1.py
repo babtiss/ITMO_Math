@@ -1,5 +1,5 @@
-from matplotlib import pyplot as plt
 from input import *
+
 
 def gradient_method(func):
     # начальн. значение
@@ -12,23 +12,18 @@ def gradient_method(func):
     X = []
     Y = []
     F = []
-    X.append(xn)
-    Y.append(yn)
-    F.append(fn)
-    
+    draw_save(xn, yn, fn, X, Y, F)
+
     # по формуле градиентного спуска получаем все значения x y
     while abs(derivative_x(xn, yn) + derivative_y(xn, yn)) > epsilon:
         xn = xn - STEP * derivative_x(xn, yn)
         yn = yn - STEP * derivative_y(xn, yn)
+        fn = func(xn, yn)
 
         count += 1
+        draw_save(xn, yn, fn, X, Y, F)
 
-        fn = func(xn, yn)
-        X.append(xn)
-        Y.append(yn)
-        F.append(fn)
-        
-    print(xn, yn, count)
+    print(xn, yn, fn, count)
     return X, Y, F
 
 
