@@ -61,7 +61,7 @@ def f_dimensional(x, y):
 # Границы поиска 1 функции
 A = -6
 B = 7
-# Шаг
+
 STEP = 0.1
 derivative_epsilon = 0.000001
 epsilon = 0.00001
@@ -75,7 +75,6 @@ DELTA = 0.5
 # # Границы поиска 2 функции
 # A = -4
 # B = 4
-# # Шаг
 # STEP = 0.1
 # derivative_epsilon = 0.000001
 # epsilon = 0.00001
