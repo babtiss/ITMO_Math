@@ -47,10 +47,9 @@ if __name__ == "__main__":
     num_prob2, stds2 = numerically_compute_probability_vec(p2, P)
     an_prob = analytically_compute_probability_vec(P)
 
-    with np.printoptions(precision=3):
-        print("Numerical solution 1:", num_prob1)
-        print("Numerical solution 1:", num_prob2)
-        print("Analytical solution:", an_prob)
+    print("Numerical solution 1:", num_prob1)
+    print("Numerical solution 1:", num_prob2)
+    print("Analytical solution:", an_prob)
 
     plt.xlabel('step')
     plt.ylabel('std')
