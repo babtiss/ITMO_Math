@@ -17,16 +17,13 @@ def analytically_compute_probability_vec(transition_matrix):
     return probability_vec
 
 
-def numerically_compute_probability_vec(
-        p, P, eps=0.0001, steps=10 ** 3):
+def numerically_compute_probability_vec(p, P, eps=0.0001, steps=10 ** 3):
     step = 0
     stds = []
 
     while not np.linalg.norm(p @ P - p) < eps and step <= steps:
         step += 1
-
         stds.append(np.linalg.norm(p @ P - p))
-
         p = p @ P
 
     return p / p.sum(), stds
@@ -46,7 +43,6 @@ if __name__ == "__main__":
     p1 = np.array([1., 0, 0, 0, 0, 0, 0, 0])
     p2 = np.array([0, 1., 0, 0, 0, 0, 0, 0])
 
-    # === Test ===
     num_prob1, stds1 = numerically_compute_probability_vec(p1, P)
     num_prob2, stds2 = numerically_compute_probability_vec(p2, P)
     an_prob = analytically_compute_probability_vec(P)
