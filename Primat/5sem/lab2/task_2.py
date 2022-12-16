@@ -153,9 +153,8 @@ class Simplex:
 
 
 if __name__ == '__main__':
-    for task_num in range(1, 10):
-        simplex = Simplex.read_from_file(f'./input-files/task{task_num}.txt')
-        print(f"task_{task_num}")
-        print(simplex.solve())
-        print(simplex.get_solution())
-        print("_" * 100)
+    task_num = 2
+    simplex = Simplex.read_from_file(f'./input-files/task{task_num}.txt')
+    print(simplex.solve())
+    print(simplex.get_solution())
+    print("_" * 100)

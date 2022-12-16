@@ -13,7 +13,6 @@ def analytically_compute_probability_vec(transition_matrix):
     ordinate[-1] = 1
 
     probability_vec = np.linalg.lstsq(equations, ordinate, rcond=None)[0]
-
     return probability_vec
 
 
